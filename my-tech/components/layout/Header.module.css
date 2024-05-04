@@ -1,0 +1,77 @@
+.container{
+    border-radius: 5px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+    border-radius: 5px;
+    height: 50px;
+    background: linear-gradient(90deg ,black ,var(--bgColor) , black);
+    width: 100%;
+}
+
+.container a::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 5px;
+    bottom: -5px;
+    left: 0px;
+    transition: .2s ease;
+}
+.container a:hover::before{
+    height: 120%;
+    z-index: -1;
+}
+
+.container a:hover{
+    color: black;
+}
+.right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-right: 10px;
+}
+.left{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+}
+.right a{
+    color: white;
+    position: relative;
+    transition: .2s ease;
+    z-index: 1;
+    padding: 5px;
+}
+.left a{
+    color: white;
+    position: relative;
+    transition: .2s ease;
+    z-index: 1;
+    padding: 5px;
+}
+
+
+
+.left a::before{
+    background: rgb(204, 146, 38);
+}
+.right a:first-child::before{
+    background: yellowgreen;
+}
+.right a:nth-child(2):before{
+    background: rgb(3, 190, 190);
+}
+.right a:nth-child(3):before{
+    background: rgb(158, 158, 3);
+}
+.right a:nth-child(4):before{
+    background: rgb(129, 38, 204);
+}
+

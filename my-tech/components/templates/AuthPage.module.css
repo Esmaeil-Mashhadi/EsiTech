@@ -1,0 +1,148 @@
+.container{
+    z-index: 9;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: auto;
+   }
+   
+   .container::before{
+       content: "";
+       position: absolute;
+       width: 100%;
+       height: 100%;
+       background: url('../../public//images/mobAuthBG.jpg');
+       background-size:100% 100%;
+       background-position: center;
+       filter: brightness(20%);
+       border-radius: 5px;
+   }
+   
+   .authBackground{
+       position: absolute;
+       width: 100%;
+       height: 100%;
+       z-index: 1;
+       pointer-events: none;
+   }
+   
+   
+   .buttonContainer{
+       position: relative;
+       z-index: 8;
+   }
+   
+   
+   @media screen and (min-width:270px) {
+   
+       .buttonContainer{
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50% , -50%);
+           border-radius: 5px;
+           box-shadow: 2px -2px 8px aqua;
+           padding: 15px;
+           display: flex;
+           align-items: center;
+           justify-content:center;
+           flex-direction: column;
+           gap: 10px;
+       }
+   
+       .buttonContainer h5{
+           font-size: 10px;
+       }
+   
+       .buttonContainer button{
+           min-width: 100%;
+           border-radius: 5px;
+           position: relative;
+           z-index: 2;
+           border: none;
+           padding:5px 10px;
+           font-size: 10px;
+           display: flex;
+           align-items: center;
+           gap: 10px;
+           background-color: rgb(6, 35, 35);
+           color: white;
+           justify-content: space-between;
+           white-space: nowrap;
+           cursor: pointer;
+           overflow: hidden;
+       }
+   
+       .buttonContainer button::after{
+            position: absolute;
+            content: "";
+            width: 0%;
+            left: 0px;
+            height: 100%;
+            background: aquamarine;
+            z-index: -1;
+            transition: .2s ease;
+            }
+   
+           .buttonContainer button:hover::after{
+            width: 100%;
+           }
+           .buttonContainer button:hover{
+            color: black;
+           }
+       .buttonContainer button svg{
+           scale: 1.2;
+       }
+       
+   
+   }
+   
+   
+   @media screen and (min-width:650px) {
+       
+           .buttonContainer{
+               width: 400px ;
+               height: 300px;
+           }
+   
+           .container h5{
+               font-size: 20px;
+               color: aqua;
+               font-weight: bold;
+           }
+           .buttonContainer button{
+               height: 100px;
+               font-size: 20px;
+               gap: 20px;
+               position: relative;
+               justify-content: center;
+               align-items: center;
+               background: rgba(0, 112, 112, 0.758);
+               z-index: 2;
+               overflow: hidden;
+           }
+           .buttonContainer button svg{
+               scale: 2;
+           }
+   }
+   
+   
+   @media screen and (min-width:1000px) {
+       .container::before{
+           background:url('../../public/images/authBG.png');
+           background-size:100% 100%;
+           background-position: center;
+           filter: brightness(70%);
+       }
+   
+       .buttonContainer{
+           height: 400px;
+       }
+       .buttonContainer button{
+           transition: .2s ease;
+       }
+   
+   
+   }
+   

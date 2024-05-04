@@ -1,0 +1,317 @@
+@media screen and (min-width:270px) {
+
+    .formContainer{
+        position: absolute;
+        z-index: 8;
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+        padding: 20px;
+        gap: 30px;
+        border-radius: 5px;
+        width: 100vw;
+        height: 100vh;
+        transition: .8s ease;
+        background: url('../../../public/images/mobAuthBG.jpg');
+        background-size:100% 100%;
+        background-position: center;
+        box-sizing: border-box;
+
+    }
+
+    .rightSide{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content:center;
+        gap: 30px;
+        height: 100%;
+        border-radius: 5px;
+        transition: .8s ease;
+        opacity: var(--opacity);
+   
+    }
+
+    .leftSide {
+        display: none;
+    }
+
+    .inputContainer{
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        border-radius: 2px;
+    }
+    
+    .inputContainer p{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgb(152, 69, 83);
+        width: 100%;
+        height: 100%;
+        align-self: center;
+        transition: .2s ease;
+        opacity: var(--opacity);
+        pointer-events: var(--pointer);
+    }
+
+    .inputContainer label{
+        position: absolute;
+        pointer-events: none;
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: bold;
+        color: black;
+        transition: .2s ease;
+        display: flex;
+        align-items: center;
+    }
+
+    .inputContainer label svg{
+        cursor: pointer;
+        transform: rotate(90deg);
+        scale: 1.8;
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        left: 5px;
+        transition: .2s ease;
+    }
+ 
+    .inputContainer input{
+        position: relative;
+        border: none;
+        outline: none;
+        border-radius: 2px;
+        width: 90%;
+        padding: 10px 70px 10px 5px;
+        transition: .2s ease;
+    }
+
+    .inputContainer input:valid + label > svg{
+        display: flex;
+        pointer-events: auto;
+        opacity: 1;
+    }
+
+    .inputContainer input:valid + label,
+    .inputContainer input:focus + label {
+        border-radius: 50%;
+        left: calc(100% - 65px);
+        width: 50px ;
+        padding: 10px 25px 10px 10px;
+        height: 100%;
+        background: var(--validationColor);
+        color: white;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+    }
+  
+    
+    .checkBoxContainer{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        text-decoration: underline;
+    }
+    .checkBoxContainer label{
+        cursor: pointer;
+        transition: .2s ease;
+
+    }
+    .conditionsError{
+        color: rgb(253, 97, 123);
+        letter-spacing: .5px;
+        white-space: nowrap;
+    }
+
+    .checkBoxContainer input{
+       margin-top: 5px;
+       scale: 1.5;
+    }
+
+    .buttonContainer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .svg{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: aqua;
+    }
+
+    .svg img{
+        width: 30px;
+        height: 30px;
+    }
+
+    .terms{
+        position: absolute;
+        width: 90%;
+        height: 90%;
+        background-color: #222222;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50% , -50%);
+        padding: 10px;
+        border-radius: 5px;
+        overflow-y: auto; 
+        z-index: 9;
+    }
+
+    .terms {
+        scrollbar-width: thin; 
+        scrollbar-color: rgba(100, 100, 100, 0.5) rgba(30, 30, 30, 0.1);
+      }
+
+
+}
+
+@media screen and (min-width:650px) {
+    .formContainer{
+        display: flex;
+        z-index: 8;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        width: 450px;
+        height: 600px;
+        border-radius: 5px;
+        box-shadow: 2px -2px 5px aqua;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50% , -50%);
+
+    }
+    .formContainer h4{
+        font-size: 20px;
+    }
+    .inputContainer input{
+        padding: 10px 70px 10px 5px;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    .inputContainer label{
+        font-size: 14px;
+    }
+    .inputContainer input:valid + label,
+    .inputContainer input:focus + label {
+        font-size: 12px;
+        left: calc(100% - 85px);
+        width: 65px ;
+        padding: 20px;
+    }
+
+}
+
+
+@media screen and (min-width:1000px) {
+    .formContainer{
+        width: fit-content;
+        background:transparent;
+        flex-direction: row;
+        width: 900px;
+        box-shadow: 0px 0px 10px aqua;
+    }
+
+    .leftSide {
+        position: relative;
+        display: block;
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: .2s ease;
+
+    }
+
+    .leftSide h4{
+        background-image: linear-gradient(45deg , aqua , purple);
+        background-clip: text;
+        color: transparent;
+    }
+
+    .leftSide img{
+        height: 400px;
+        width: 400px;
+        animation: rotations infinite 20s linear;
+        cursor: none;
+    }
+
+    .leftSide::before {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        transition: .5s ease;
+        top: 50%;
+        transform: translate(0, -35%);
+        border-radius: 50%;
+        color: aqua;
+        font-weight: bold;
+        background: url('../../../public/images/Esi.jpg');
+        background-position: center;
+        background-size: cover;
+        box-shadow: 0px 0px 100px black;
+        filter: brightness(60%);
+
+    }
+    .leftSide:hover::before{
+        filter:brightness(100%) ;
+    }
+
+    .leftSide img:hover{
+        animation-play-state: paused;
+    }
+
+    @keyframes rotations {
+        from{
+            transform: rotate(0deg);
+        }
+        to{
+            transform: rotate(360deg);
+        }
+    }
+
+
+    .inputContainer{
+        width: 80%;
+        overflow: hidden;
+    }
+    .inputContainer input{
+        width: 100%;
+    }
+
+    .rightSide label{
+        left: 10px;
+        gap:20px
+    }
+    .checkBoxContainer{
+        font-size: 15px;
+    }
+
+    .terms{
+        max-width: 900px;
+    }
+
+
+
+}

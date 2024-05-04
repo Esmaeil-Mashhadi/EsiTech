@@ -1,0 +1,135 @@
+.container {
+ position: relative;
+ height: 60vh;
+ overflow: hidden;
+ border-radius: 10px;
+ box-shadow: 0px 10px 10px black;
+}
+
+
+.textContainer{
+    position: absolute;
+    width: 500px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% ,-50%);
+}
+
+.text h1{
+    background: linear-gradient(45deg, aqua ,yellow , gray);
+    background-clip:text;
+    color: transparent;
+    animation: showHeader .5s linear forwards ;
+    opacity: 0;
+    transform: translateY(-220%);
+}
+@keyframes showHeader {
+    from{
+        opacity: 0;
+        transform: translateY(-220%);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.text p{
+    font-size: 20px;
+    animation: showDesc .5s linear forwards;
+    animation-delay: .5s;
+    opacity: 0;
+    transform: translateY(220%);
+    background: rgba(0, 0, 0, 0.708);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.text a:hover{
+    text-decoration: underline;
+}
+@keyframes showDesc {
+    from{
+        opacity: 0;
+        transform: translateY(220%);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.container::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('../../../public/images/banner.jpg');
+    background-size: 100% 100%;
+    scale: 1.2;
+    background-position: var(--x) var(--y);
+    opacity: .8;
+}
+
+.more{
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    padding: 5px;
+    position: relative;
+    color: white;
+    animation: showDesc .5s linear forwards;
+}
+
+.more::before{
+    content: '';
+    position: absolute;
+    width: 10%;
+    height: 100%;
+    border-radius: 50px;
+    background: rgb(45, 44, 44);
+    z-index: -1;
+    transition: .2s ease;
+
+}
+.more svg{
+    width: 30px;
+    height: 30px;
+    transition: .2s ease;
+
+}
+
+.more:hover::before{
+    width: 100%;
+}
+.flash span{
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+    left: 15px;
+
+}
+
+.flash span:last-child{
+    opacity: 1;
+    width: 30px;
+    height: 5px;
+    border-radius: 5px;
+    background: white;
+    bottom: 53%;
+    left: 22px;
+    opacity: 0;
+    transition: .1s ease;
+
+}
+
+.more:hover .flash span:last-child{
+    opacity: 1;
+}
+
+.more:hover svg{
+    transform: translateX(20px);
+}
+
+
+

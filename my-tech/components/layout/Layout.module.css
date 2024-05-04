@@ -1,0 +1,14 @@
+.whole{
+    max-width: 2560px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 10px);
+    /*removed 10px header padding to prevent scroll*/
+    box-sizing: border-box;
+}
+
+.body{
+    flex: 1;
+    margin: 20px;
+}

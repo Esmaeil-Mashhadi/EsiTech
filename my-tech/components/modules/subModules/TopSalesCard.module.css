@@ -1,0 +1,28 @@
+.container{
+    border: solid white;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 20px;
+    min-width: 300px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: .2s ease;
+    cursor: pointer;
+}
+
+.hoverDesc{
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    background: rgba(255, 255, 255, 0.653);
+    border-radius: 5px;
+    transform: translateY(120%);
+    transition: .3s ease;
+}
+
+.container:hover > .hoverDesc{
+    transform: translate(0);
+}

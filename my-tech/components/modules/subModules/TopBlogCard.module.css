@@ -1,0 +1,11 @@
+.container{
+    border: solid;
+    border-color: darkcyan;
+    border-radius: 5px;
+    width: 90%;
+    margin: auto;
+    min-height: 288px;
+    box-shadow: 0px 0px 20px black;
+    transition: .3s ease;
+    transform: translateY(var(--scrollY))
+}
