@@ -1,24 +1,24 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, FormEventHandler, MouseEvent ,useEffect, useState } from 'react';
 import styles from './SignForm.module.css'
-
-import Terms from './Terms';
-//icons
 import { RiEyeCloseLine } from "react-icons/ri";
 import { HiEye } from "react-icons/hi2";
 import formValidation from '@/utils/authentication/formValidation';
-import { dynamicFormStyleHandler } from '@/utils/dynamicStyles/Form';
 import { CancelButton, SubmitButton } from '../../constants/buttons/Button';
-import api from '@/config/axios.config';
-import { saveCookie } from '@/utils/authentication/cookieHandling';
 import { useRouter } from 'next/navigation';
+import { AuthPropType, ErrorResponse, ErrorType, FormDataType, TokenResponse, decideType, elemntStyle } from './types/authtypes';
+import { dynamicFormStyleHandler } from '@/utils/dynamicStyles/Form';
+import Terms from './Terms';
+import { saveCookie } from '@/utils/authentication/cookieHandling';
+import api from '@/configs/axios.config';
 
 
-const SignForm = ({ setDecide , setNotifObject , notifObject}) => {
+
+const SignForm = ({ setDecide , setNotifObject , notifObject}:AuthPropType) => {
   const [terms,  setTerms] = useState(false)
   const [showPass , setShowPass] = useState(false)
   const [submit , setSubmit] = useState(false)
 
-  const [formData , setFormData] = useState({
+  const [formData , setFormData] = useState<FormDataType>({
     email:"",
     password:"",
     confirm :"",
@@ -26,24 +26,14 @@ const SignForm = ({ setDecide , setNotifObject , notifObject}) => {
     check:false ,
   })
 
-  const [errors , setErrors] = useState({})
+
+  const [errors , setErrors] = useState<ErrorType>({})
   const router = useRouter()
-  const changeHandler = (e)=>{
-    const {value , name} = e.target
-    if(name == 'check'){
-      setFormData({
-        ...formData , [name] : e.target.checked
-      })
-    }else{
-      setFormData({
-        ...formData,
-        [name] :value
-      })
-    }
-  }
 
 
-  const signUpHandler = async(e:MouseEvent)=>{
+
+
+  const signUpHandler:FormEventHandler= async(e):Promise<void>=>{
     e.preventDefault()
     setSubmit(true)
     setTimeout(() => {
@@ -52,7 +42,8 @@ const SignForm = ({ setDecide , setNotifObject , notifObject}) => {
 
     if(!Object.keys(errors).length){
       api.post('/auth/register' , formData)
-      .then(({data : {data : {accessToken }}}) => {
+      .then(({data}:{data:TokenResponse}) => {
+        const accessToken = data.data.tokens.accessToken
         saveCookie(accessToken)
         setNotifObject({
           type:"success",
@@ -64,10 +55,10 @@ const SignForm = ({ setDecide , setNotifObject , notifObject}) => {
           router.push('/')
         }, 2000);
       }) 
-      .catch(err=>{
+      .catch((err:ErrorResponse)=>{
         setNotifObject({
           type:"error",
-          message:err.response.data.data.message,
+          message:err?.response?.data?.data?.message || 'something went wrong try again later',
           triggered:!notifObject.triggered
         })
       })
@@ -76,7 +67,7 @@ const SignForm = ({ setDecide , setNotifObject , notifObject}) => {
   }
 
 
-  const cancelHandler = (e)=>{
+  const cancelHandler = (e:MouseEvent)=>{
     e.preventDefault()
     setDecide({})
   }
@@ -87,6 +78,23 @@ const SignForm = ({ setDecide , setNotifObject , notifObject}) => {
 
   },[formData]) 
 
+  const changeHandler:FormEventHandler = (e:ChangeEvent<HTMLInputElement>)=>{
+    const {name , value , checked} = e.target 
+    console.log(name);
+    if (name === 'check') {
+      setFormData({
+        ...formData,
+        [name]: checked, 
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value, 
+      });
+    }
+  }
+  
+
   
 
   const {
@@ -95,12 +103,12 @@ const SignForm = ({ setDecide , setNotifObject , notifObject}) => {
     emailMessageStyle , confirmMessageStyle , mobileMessageStyle,
     passwordMessageStyle  } = dynamicFormStyleHandler(errors , submit)
 
- 
- 
+    const formValidationColor:elemntStyle ={
+      '--validationColor':"rgb(223, 68, 37)"
+    }
     return (
       <div>
-
-        <form style={{'--validationColor':"rgb(223, 68, 37)"}}  onSubmit={signUpHandler} noValidate onChange={changeHandler} className={styles.formContainer}>
+        <form style={formValidationColor}  onSubmit={signUpHandler} noValidate onChange={changeHandler}  className={styles.formContainer}>
 
             <div className={styles.leftSide}>
                   <h4>Welcome to ESI TECH</h4>
@@ -111,20 +119,20 @@ const SignForm = ({ setDecide , setNotifObject , notifObject}) => {
 
             <h4>Sign up form</h4>
             <div style={emailValidationStyle}  className={styles.inputContainer}>
-              <input name='email' required type='text' />
+              <input  name='email' required type='text' />
               <label>email</label>
                <p style={emailMessageStyle}>{errors.emailError}</p>
               </div>
   
             <div style={mobileValidationStyle} className={styles.inputContainer}>
-              <input name='mobile' required  />
+              <input  name='mobile' required  />
               <label>mobile</label>
               <p style={mobileMessageStyle}>{errors.mobileError}</p>
   
             </div>
   
             <div style={passwordValidationStyle} className={styles.inputContainer}>
-              <input name='password' required type={showPass ? 'text' :"password"} />
+              <input  name='password' required type={showPass ? 'text' :"password"} />
               <label onClick={()=>setShowPass(!showPass)} >
                {showPass ? <HiEye/> : <RiEyeCloseLine />}password</label>
               <p style={passwordMessageStyle}>{errors.passwordError}</p>
@@ -132,20 +140,20 @@ const SignForm = ({ setDecide , setNotifObject , notifObject}) => {
             </div>
   
             <div style={confirmValidationStyle} className={styles.inputContainer}>
-              <input name='confirm' required type='password' />
+              <input  name='confirm' required type='password' />
               <label>confirm password</label>
               <p style={confirmMessageStyle}>{errors.confirmError}</p>
   
             </div>
   
             <div className={styles.checkBoxContainer}>
-              <input name='check'  type="checkbox" checked ={formData.check} />
-              <label onClick={()=>setTerms(true)} className={errors.checkError && submit ? styles.conditionsError : null}>accept our terms and conditions</label>
+              <input  name='check'  type="checkbox" checked ={formData.check} />
+              <label onClick={()=>setTerms(true)} className={errors.checkError && submit ? styles.conditionsError : undefined}>accept our terms and conditions</label>
             </div>
   
             <div className={styles.buttonContainer}>
-              <CancelButton text={'Back'} Handler={cancelHandler} />
-              <SubmitButton  text={'Sign up'}  />
+              <CancelButton text={'Back'} handler={cancelHandler} />
+              <SubmitButton  text={'Sign up'} handler={signUpHandler} />
             </div>
  
            </div>

@@ -12,12 +12,12 @@ const Header = async() => {
              <div className={styles.left}>
                  <p>EsiTech</p>
                  {user ? <Link href="/profile">Profile</Link> : 
-                    <Link href="/registeration">Sign up/Login</Link>
+                    <Link href="/auth">Sign up/Login</Link>
                 }
              </div>
 
              <div className={styles.right}>
-                    <Link href="">Home</Link>
+                    <Link href="/">Home</Link>
                     <Link href="">Shop</Link>
                     <Link href="">Blog</Link>
                     <Link href="">Sell</Link>

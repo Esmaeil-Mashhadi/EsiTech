@@ -1,0 +1,14 @@
+.container{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.container h3{
+    color: rgba(0, 255, 255, 0.663);
+}
+.buttonContainer{
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+    padding: 10px 0px ;
+}

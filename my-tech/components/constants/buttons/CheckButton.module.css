@@ -1,0 +1,43 @@
+
+
+@media  screen and (min-width:270px) {
+    .container{
+        border-radius: 5px;
+        width: 60px;
+        height: 20px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow:inset 0px 0px 50px var(--bgColor);
+    }
+    
+    .side{
+        width: 50%;
+        height: 100%;
+        cursor: pointer;
+    }
+    
+    .svgContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        transform: translateX(var(--transform));
+        background:var(--bgColor);
+        height: 100%;
+        width: 50%;
+        color: black;
+        transition: .2s ease;
+        border-radius: 2px;
+        cursor: auto;
+    }
+    
+    .svgContainer svg{
+        position: absolute;
+    }
+
+}
+
+

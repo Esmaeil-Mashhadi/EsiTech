@@ -1,25 +1,22 @@
-import { MouseEventHandler, useState } from 'react';
+import { MouseEventHandler, useState  } from 'react';
 import styles from './Button.module.css'
-import { dynamicStyles } from '../../../utils/dynamicStyles/HoverStyle';
 import buttonFunction from '../functions/ButtonFunction';
+import { dynamicStyles } from '@/utils/dynamicStyles/HoverButtonStyle';
 
 interface buttonPropType {
   text:string 
   styleClass?:string , 
-  handler: MouseEventHandler
+  handler:MouseEventHandler
 }
 const Button = ({text, styleClass, handler }:buttonPropType) => {
 
   const [enter, setEnter] = useState(false);
   const [leave, setLeave] = useState(false);
 
-  const  enterHandler  =   buttonFunction.enterHandler;
-  const leaveHandler = buttonFunction.leaveHandler
-
-  console.log(enterHandler);
+  const {enterHandler , leaveHandler} = buttonFunction
 
   const { hoverStyle } = dynamicStyles();
-  const style = hoverStyle(enter, leave , text);
+  const style:Record<string , string> = hoverStyle(enter, leave );
   return (
     <button
       style={style}
@@ -32,7 +29,6 @@ const Button = ({text, styleClass, handler }:buttonPropType) => {
     </button>
   );
 };
-
 
 export const SubmitButton = ({ text, handler }:buttonPropType) => {
   return (
