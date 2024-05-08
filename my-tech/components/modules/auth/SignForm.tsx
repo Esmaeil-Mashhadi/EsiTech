@@ -31,8 +31,6 @@ const SignForm = ({ setDecide , setNotifObject , notifObject}:AuthPropType) => {
   const router = useRouter()
 
 
-
-
   const signUpHandler:FormEventHandler= async(e):Promise<void>=>{
     e.preventDefault()
     setSubmit(true)
@@ -44,21 +42,25 @@ const SignForm = ({ setDecide , setNotifObject , notifObject}:AuthPropType) => {
       api.post('/auth/register' , formData)
       .then(({data}:{data:TokenResponse}) => {
         const accessToken = data.data.tokens.accessToken
-        saveCookie(accessToken)
-        setNotifObject({
-          type:"success",
-          message:"welcome to Esi Tech",
-          triggered:!notifObject.triggered
-        })
-        setTimeout(() => {
-          router.refresh()
-          router.push('/')
-        }, 2000);
-      }) 
-      .catch((err:ErrorResponse)=>{
+        if(accessToken){
+          saveCookie(accessToken) 
+          setNotifObject({
+            type:"success",
+            message:"welcome to Esi Tech",
+            triggered:!notifObject.triggered
+          })
+          setTimeout(() => {
+            router.refresh()
+            router.push('/')
+          }, 2000);
+        }else{
+          throw new Error("failed to save cookie try again ")
+        }
+      }).catch((err:ErrorResponse)=>{
+        console.log(err);
         setNotifObject({
           type:"error",
-          message:err?.response?.data?.data?.message || 'something went wrong try again later',
+          message:err?.response?.data?.data?.message ,
           triggered:!notifObject.triggered
         })
       })

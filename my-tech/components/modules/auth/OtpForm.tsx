@@ -12,7 +12,7 @@ import { AxiosResponse } from 'axios';
 const OtpForm = ({setDecide , setNotifObject ,notifObject}:AuthPropType) => {
    const [data , setData]  = useState<LogType>({
     mobile:"",
-    code:undefined, 
+    code:"", 
     remember:false
    })
 

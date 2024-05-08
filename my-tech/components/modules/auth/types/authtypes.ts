@@ -24,7 +24,7 @@ type LogProps ={
 
 type OtpProps ={
   mobile:string ,
-  code:number|undefined
+  code:number|string
 }
 
 

@@ -31,7 +31,6 @@ const TopSales = () => {
     // if it goes to left it mean were going forward so walk is minus and minus * minus is euqla so it incrases the scroll
   };
 
-  console.log(scrollLeft);
   const endHandler = () => {
     setMouseDown(false);
     setScrollStyle({})

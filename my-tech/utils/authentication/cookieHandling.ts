@@ -7,6 +7,7 @@ import api from "@/configs/axios.config"
 
 const getClientCookie = ()=>{
    const clientCookie:Record<string ,string> = {}
+   
       document.cookie.split(";").forEach(item =>{
          const cookieSplit = item.split('=')
          clientCookie[cookieSplit[0].trim()] = cookieSplit[1]
@@ -14,8 +15,8 @@ const getClientCookie = ()=>{
       })
    
    return clientCookie
-
 }
+
 
 const getNewToken = async()=>{
    const {refreshToken} = getClientCookie()
