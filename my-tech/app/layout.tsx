@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/layout/Layout";
-import { QueryClientProvider } from "@tanstack/react-query";
 import ReactQueryProvider from "@/utils/providers/ReactQueryProvider";
+import NextTopLoader from "nextjs-toploader";
+import NextLoader from "@/utils/dynamicStyles/LoadingProgress/TopLoader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en">
           <body className={inter.className}>
+            <NextLoader/> 
             <ReactQueryProvider>
                <Layout>
-                  {children}  
+                    {children}  
                 </Layout>
             </ReactQueryProvider>
            

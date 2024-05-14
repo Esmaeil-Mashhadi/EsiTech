@@ -1,17 +1,16 @@
 import Link from 'next/link';
 import styles from './Header.module.css'
 import { cookies } from 'next/headers';
-// import { checkUserAccessibility } from '@/utils/authentication/checkUserAccessibility';
+import { checkUserAccessibility } from '@/utils/authentication/checkUserAccessibility';
 
 const Header = async() => {
 
-    // const user = await checkUserAccessibility(cookies().get("accessToken"))
-   let user = false
+    const user = await checkUserAccessibility(cookies().get("accessToken"))
     return (
         <div className={styles.container}>
              <div className={styles.left}>
                  <p>EsiTech</p>
-                 {user ? <Link href="/profile">Profile</Link> : 
+                 {user ? <Link href="/user">Profile</Link> : 
                     <Link href="/auth">Sign up/Login</Link>
                 }
              </div>

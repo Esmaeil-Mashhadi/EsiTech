@@ -1,0 +1,85 @@
+.container{
+    display: flex;
+    position: absolute;
+    background: #040b1380;
+    z-index: 9;
+    height: 100%;
+}
+
+.menuContainer{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    width: 50px;
+    list-style: none;
+    justify-content: space-around;
+    padding: 0px;
+    transition: .3s ease;
+    border-radius: 5px;
+}
+
+.menuContainer svg{
+    scale: 1.5;
+}
+
+.menuContainer:hover{
+    width: 200px;
+}
+
+.menuContainer li{
+    width: 100%;
+}
+.menuContainer li a {
+    position: relative;
+    transition: .2s ease;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background: var(--color) ;
+    color: white;
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.menuContainer li span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .2s ease;
+}
+.menuContainer:hover li {
+    width: 100%;
+    transition: .2s ease;
+}
+
+.menuContainer:hover span{
+    transform: translate(70px , -50%);
+}
+
+
+.menuContainer li p{
+position: absolute;
+white-space: nowrap;
+left: 10px;
+transform: translateX(-200%);
+transition: .4s ease;
+font-weight: bold;
+}
+
+.menuContainer:hover p{
+    transform: translate(0px);
+}
+
+.menuContainer li a:hover{
+    cursor: pointer;
+    box-shadow:inset 0px 0px 30px darkcyan;
+}
+
+
+
+
+
+

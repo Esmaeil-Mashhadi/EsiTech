@@ -10,8 +10,8 @@ class UserController {
         if(user){
             return res.status(StatusCodes.OK).json({
                 status:StatusCodes.OK ,
-                user :user.email,
-                mobile:user?.mobile
+                email :user.email,
+                mobile:user?.mobile,
             })
         }else{
             throw createHttpError.NotFound("couldn't find the user")

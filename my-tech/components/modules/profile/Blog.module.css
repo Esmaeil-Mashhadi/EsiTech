@@ -1,0 +1,12 @@
+.container{
+    animation: intialLoad .4s linear forwards;
+   }
+   @keyframes intialLoad {
+       from{
+           transform: translateX(1000%);
+           opacity: 0;
+       }
+       to{
+           opacity: 1;
+       }
+   }

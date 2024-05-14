@@ -49,3 +49,12 @@ export const CancelButton = ({ text, handler }:buttonPropType) => {
     />
   );
 };
+export const NeutralButton = ({ text, handler }:buttonPropType) => {
+  return (
+    <Button
+      text={text}
+      styleClass={styles.neutralButton}
+      handler={handler}
+    />
+  );
+};

@@ -1,0 +1,189 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+* {transition: 0.33s ease}
+body {background-color: #9AB}
+    
+.rela-block
+    display block
+    position relative
+    overflow hidden
+    
+.side-bar
+    z-index 100
+    position fixed
+    width 80px
+    top 0
+    bottom 0
+    left 0
+    background-color rgba(255,255,255,1)
+    box-shadow 4px 0px 25px -1px rgba(0,0,0,0.5)
+    font-family "Raleway"
+    font-weight 600
+    font-size 18px
+    line-height 24px
+    letter-spacing 2px
+    text-transform uppercase
+    transition 0.33s ease
+    &:hover
+        width 250px
+        & .side-button::before
+            left 6%
+            transition 0.33s ease, left 0.25s 0.15s ease
+        & .hover-svg
+            height 130px
+            width 130px
+
+.side-container
+    position absolute
+    width 100%
+    &.top
+        height 20%
+        top 1%
+    &.middle
+        padding-top 10px
+        height 65%
+        top 55%
+        transform translateY(-50%)
+    
+.hover-svg
+    position absolute
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
+    height 80px
+    width 80px
+    fill none
+    stroke rgba(0,0,0,0.5)
+    stroke-width 2
+    cursor pointer
+    transition 0s ease, height 0.33s ease, width 0.33s ease
+    &:hover
+        stroke rgba(0,0,0,1)
+        
+.side-button
+    height 15%
+    margin 5px 0
+    background-color #E4E9E9
+    cursor pointer
+    &:hover
+        background-color #C4C9C9
+    &::before
+        position absolute
+        top 50%
+        left -250px
+        transform translateY(-50%)
+        transition 0.33s ease
+    &::after
+        content ""
+        position absolute
+        height 40px
+        width 40px
+        top 50%
+        right 20px
+        transform translateY(-50%)
+        background-size cover !important
+        transition 0.33s ease
+    &.facebook
+        &::before
+            content "Facebook"
+        &:after
+            background url('https://cdn3.iconfinder.com/data/icons/social-media-2026/60/Socialmedia_icons_Facebook-128.png') no-repeat center
+    &.twitter
+        &::before
+            content "Twitter"
+        &:after
+            background url('https://cdn3.iconfinder.com/data/icons/social-media-2026/60/Socialmedia_icons_Twitter-07-128.png') no-repeat center
+    &.instagram
+        &::before
+            content "Instagram"
+        &:after
+            background url('https://cdn3.iconfinder.com/data/icons/social-media-2026/60/Socialmedia_icons_Instagram-128.png') no-repeat center
+    &.soundcloud
+        &::before
+            content "Soundcloud"
+        &:after
+            background url('https://cdn3.iconfinder.com/data/icons/social-media-2026/60/Socialmedia_icons_SoundCloud-128.png') no-repeat center
+    &.linked-in
+        &::before
+            content "LinkedIn"
+        &:after
+            background url('https://cdn3.iconfinder.com/data/icons/social-media-2026/60/Socialmedia_icons_LinkedIn-128.png') no-repeat center
+    &.pinterest
+        &::before
+            content "Pinterest"
+        &:after
+            background url('https://cdn3.iconfinder.com/data/icons/social-media-2026/60/Socialmedia_icons_Pinterest-23-128.png') no-repeat center
+            
+.plus-button
+    position absolute
+    bottom 30px
+    right 30px
+    z-index 100
+    height 75px
+    width 75px
+    border-radius 100%
+    background-color #E91E63
+    box-shadow 2px 2px 10px 1px rgba(0,0,0,0.58)
+    backface-visibility hidden
+    transform scale(0.92)
+    &::before
+        content "+"
+        position absolute
+        top 50%
+        left 50%
+        transform translate(-50%, -50%)
+        color white
+        font-size 28px
+        font-weight 600
+    &:hover
+        transform scale(1)
+        box-shadow 3px 3px 12px 2px rgba(0,0,0,0.5)
+    &:active
+        transform scale(0.96)
+        box-shadow 2px 3px 11px 1px rgba(0,0,0,0.53)
+    &.open
+        transform rotate(45deg) scale(0.92)
+        background-color #333
+        box-shadow 2px 2px 10px 1px rgba(0,0,0,0.58)
+        &:hover
+            transform scale(1) rotate(45deg)
+            box-shadow 3px 3px 12px 2px rgba(0,0,0,0.5)
+        &:active
+            transform scale(0.96) rotate(45deg)
+            box-shadow 2px 3px 11px 1px rgba(0,0,0,0.53)
+        
+.social-button
+    position absolute
+    bottom 43px
+    right 41px
+    height 50px
+    width 50px
+    transform scale(0.8)
+    background-size 153% !important
+    border-radius 100%
+    box-shadow 2px 2px 7px 0px rgba(0,0,0,0.4)
+    cursor pointer
+    z-index 99
+    backface-visibility hidden
+    &:hover
+        transform scale(1)
+        transition 0.35s cubic-bezier(0.3, 0.2, 0, 2.5)
+    &.twitter-button
+        background url("https://cdn4.iconfinder.com/data/icons/social-icon-4/842/twitter-256.png") no-repeat center
+        &.active
+            bottom 110px
+            right 21px
+    &.facebook-button
+        background url("https://cdn4.iconfinder.com/data/icons/social-icon-4/842/facebook-256.png") no-repeat center
+        &.active
+            bottom 105px
+            right 73px
+    &.pinterest-button
+        background url("https://cdn4.iconfinder.com/data/icons/social-icon-4/842/pinterest-256.png") no-repeat center
+        &.active
+            bottom 67px
+            right 109px
+    &.insta-button
+        background url("https://cdn4.iconfinder.com/data/icons/social-icon-4/842/instagram-256.png") no-repeat center
+        &.active
+            bottom 15px
+            right 105px

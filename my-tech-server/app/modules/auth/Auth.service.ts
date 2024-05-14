@@ -55,7 +55,6 @@ class AuthService {
 
      loginOtpService = async(req:Request)=>{
         const {mobile ,code , remember} = req.body
-        console.log(req.body);
         await otpValidation.validateAsync({mobile , code: code+"" , remember})
         if(code){
            const user = await userModel.findOne({code})
